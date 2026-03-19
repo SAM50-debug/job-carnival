@@ -1,0 +1,88 @@
+/* src/components/LogoMarquee.css */
+.logo-marquee-section {
+  background-color: transparent !important; /* Force transparent override */
+  padding: 5rem 0; /* Add sufficient breathing space */
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  /* Mask gradient and effects removed to prevent 'strip' visibility */
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.logo-marquee-container {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  background-color: transparent;
+}
+
+.logo-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 64px; /* Desktop gap adjusted */
+  width: max-content;
+  /* Infinite horizontal auto-scroll */
+  animation: scrollLogos 35s linear infinite; 
+  padding: 0 24px;
+  background-color: transparent;
+}
+
+/* Pause on hover effect */
+.logo-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-marquee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.logo-marquee-img {
+  /* Increased Logo Size System (Desktop) */
+  height: 120px;
+  max-height: 140px;
+  width: auto;
+  max-width: 250px; 
+  object-fit: contain;
+  background-color: transparent !important;
+
+  /* Visual Style (Original Colors, Premium Faded) */
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  /* Scale transition handled by global .hover-logo */
+}
+
+/* Visual Style */
+.logo-marquee-item:hover .logo-marquee-img {
+  opacity: 1;
+}
+
+/* Marquee Scroll Math */
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .logo-marquee-section {
+    padding: 3.5rem 0; 
+  }
+  .logo-marquee-track {
+    gap: 32px; /* Increased mobile gap */
+  }
+  .logo-marquee-item {
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-marquee-img {
+    height: 80px; /* Increased mobile size */
+    max-height: 100px;
+    max-width: 160px;
+  }
+}

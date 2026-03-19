@@ -1,0 +1,116 @@
+.why-attend-section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background-color: var(--color-surface-2); /* Distinct separation backplate */
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.why-attend-container {
+  max-width: 1000px; /* Nicer constraint for a 2x2 grid */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.why-attend-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+}
+
+.why-attend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-standard);
+}
+
+.why-attend-card {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: var(--transition-standard);
+  opacity: 0;
+  animation: whyAttendFadeInUp 0.6s ease-out forwards;
+}
+
+.why-attend-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 20px rgba(44, 81, 117, 0.08); /* Minimal soft shadow */
+}
+
+.why-attend-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background-color: var(--accent-amber-light); /* Soft background block */
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  transition: var(--transition-standard);
+}
+
+.why-attend-card:hover .why-attend-icon {
+  background-color: var(--color-primary);
+  color: var(--text-light); /* Inverse contrast on hover */
+}
+
+.why-attend-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.why-attend-card-desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Soft CTA Styles */
+.why-attend-soft-cta {
+  display: inline-block;
+  margin-top: 3rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.why-attend-soft-cta:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Base entry animation avoiding complex scaling */
+@keyframes whyAttendFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .why-attend-grid {
+    grid-template-columns: 1fr; /* Stack into 1 column */
+  }
+  
+  .why-attend-card {
+    padding: 2rem 1.5rem;
+  }
+}

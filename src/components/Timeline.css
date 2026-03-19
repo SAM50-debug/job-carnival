@@ -1,0 +1,253 @@
+.timeline-section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background-color: var(--color-surface-2);
+  overflow-x: hidden; /* Prevent horizontal scroll from entry animations */
+}
+
+.timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.timeline-title {
+  /* Using global h2 via App.css usually, or rely on explicit font-size below */
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.timeline-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+/* Background track (Empty Line) */
+.timeline-track-base {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background-color: var(--border-subtle);
+  z-index: 1;
+}
+
+/* 1. Scroll Progress Line (Fill track) */
+.timeline-track-fill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleY(var(--progress, 0));
+  transform-origin: top center;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-hover));
+  box-shadow: 0 0 15px var(--accent-amber-glow);
+  z-index: 2;
+  transition: transform 0.1s linear; /* Smooth tight link to scroll pos */
+}
+
+/* 3. Alternating Animations setup */
+.timeline-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-bottom: 5rem;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Desktop Alternating bounds */
+.timeline-item.even {
+  justify-content: flex-start;
+}
+.timeline-item.odd {
+  justify-content: flex-end;
+}
+
+/* Content Box Base */
+.timeline-content {
+  width: 45%; 
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all 0.6s ease-out; /* 5. Smooth Transition */
+}
+
+/* Text alignment & entry offsets */
+.timeline-item.even .timeline-content {
+  text-align: right;
+  transform: translateX(-30px);
+}
+.timeline-item.odd .timeline-content {
+  text-align: left;
+  transform: translateX(30px);
+}
+
+/* The Node */
+.timeline-node {
+  position: absolute;
+  left: 50%;
+  top: 1.5rem; /* ~Top-aligned with header */
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  background-color: var(--bg-dark);
+  border: 3px solid var(--text-secondary); /* Inactive subtle state */
+  border-radius: 50%;
+  z-index: 4;
+  transition: all 0.5s ease-out;
+}
+
+/* 4. Glow Depth */
+.timeline-node::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--accent-amber);
+  filter: blur(12px);
+  opacity: 0; /* Inactive */
+  transition: opacity 0.6s ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =========================================
+   IN-VIEW ANIMATIONS (Active State) 
+   ========================================= */
+
+/* Triggers component visibility */
+.timeline-item.in-view {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 2. Active Item Highlight : Nodes */
+.timeline-item.in-view .timeline-node {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-bg), 0 4px 20px rgba(44, 81, 117, 0.08);
+}
+
+.timeline-item.in-view .timeline-node::before {
+  opacity: 0.35; /* Soft amber glow behind node */
+}
+
+/* 2. Active Item Highlight : Content (scale/glow) */
+.timeline-item.in-view .timeline-content {
+  transform: scale(1.02) translateX(0); /* Ends scale and translation perfectly */
+  border-color: var(--border-active);
+  background-color: var(--bg-card-hover);
+  box-shadow: 0 4px 20px rgba(44, 81, 117, 0.08); /* Soft depth shadow */
+}
+
+/* 3. Alternating Animations trigger via specific keyframes */
+.timeline-item.even.in-view {
+  animation: slideFadeLeft 0.8s ease-out forwards;
+}
+
+.timeline-item.odd.in-view {
+  animation: slideFadeRight 0.8s ease-out forwards;
+}
+
+/* Entry Animation Keyframes */
+@keyframes slideFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFadeUpTimeline {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typography */
+.timeline-stage-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.timeline-stage-date {
+  font-size: 0.95rem;
+  color: var(--accent-amber);
+  font-weight: 500;
+}
+
+/* =========================================
+   7. Mobile Behavior 
+   ========================================= */
+@media (max-width: 768px) {
+  .timeline-track-base,
+  .timeline-track-fill {
+    left: 20px;
+  }
+  
+  .timeline-node {
+    left: 20px;
+    top: 1.5rem;
+  }
+  
+  .timeline-item.even,
+  .timeline-item.odd {
+    justify-content: flex-end;
+  }
+  
+  .timeline-item.even .timeline-content,
+  .timeline-item.odd .timeline-content {
+    width: calc(100% - 60px); 
+    text-align: left;
+    /* Reset initial translation offset for mobile */
+    transform: translateY(30px) scale(0.98); 
+  }
+
+  .timeline-item.in-view .timeline-content {
+    transform: scale(1.02) translateY(0); 
+  }
+
+  /* Disable alternating entry layout on mobile */
+  .timeline-item.even.in-view,
+  .timeline-item.odd.in-view {
+    animation: slideFadeUpTimeline 0.7s ease-out forwards;
+  }
+}

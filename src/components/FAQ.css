@@ -1,0 +1,90 @@
+.faq-section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background-color: var(--color-bg); /* Use page-wide background mapping */
+  color: var(--text-primary);
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-1); /* Dedicated surface cards */
+  overflow: hidden;
+  transition: var(--transition-standard);
+}
+
+
+
+/* Question Button */
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  padding: 1.5rem; /* Better padding for card design */
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--accent-amber);
+}
+
+/* Icon Animation */
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+/* Active State Styles */
+.faq-item.active .faq-question {
+  color: var(--accent-amber);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Answer Expansion */
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  padding: 0;
+}
+
+.faq-answer p {
+  padding: 0 1.5rem 1.5rem 1.5rem; /* Responsive to card padding */
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px; /* Arbitrary large height to allow transition */
+  opacity: 1;
+}

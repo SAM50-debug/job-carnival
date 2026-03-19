@@ -1,0 +1,90 @@
+.mentor-section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background-color: var(--color-surface-2);
+  text-align: center;
+}
+
+.mentor-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 3 columns desktop, 1 column mobile */
+.mentor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--gap-standard);
+}
+
+.mentor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: var(--transition-standard);
+  opacity: 0;
+  animation: mentorFadeInUp 0.6s ease-out forwards;
+}
+
+.mentor-card:hover {
+  transform: translateY(-4px); 
+  border-color: var(--border-active);
+  background-color: var(--color-surface-1); /* Removed hover bg shift */
+  box-shadow: 0 4px 20px rgba(44, 81, 117, 0.08); /* Glow replaced with shadow */
+}
+
+/* Circular fixed image */
+.mentor-avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border: 2px solid var(--border-subtle);
+  transition: var(--transition-standard);
+}
+
+.mentor-card:hover .mentor-avatar-wrapper {
+  border-color: var(--border-active);
+}
+
+.mentor-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mentor-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-card-hover);
+}
+
+/* Typography Details */
+.mentor-name {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.mentor-role {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-amber);
+}
+
+/* Simple Animation */
+@keyframes mentorFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

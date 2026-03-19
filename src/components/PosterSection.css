@@ -1,0 +1,36 @@
+.poster-section {
+  background-color: transparent; 
+  position: relative;
+  z-index: 1; /* Above blobs */
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-standard, 2rem);
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .poster-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.poster-card {
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  display: block;
+  box-shadow: 0 4px 12px rgba(44, 81, 117, 0.08); /* Initial subtle shadow */
+  background-color: var(--bg-card, #FFFFFF);
+  cursor: pointer;
+  /* Hover state scale/shadow is handled globally by .hover-card */
+}
+
+.poster-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: opacity var(--transition-standard, 0.3s ease);
+}

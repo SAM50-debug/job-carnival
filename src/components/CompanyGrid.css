@@ -1,0 +1,131 @@
+.company-section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  background-color: var(--color-surface-2);
+  color: var(--text-primary);
+}
+
+.company-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.company-section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.company-section-desc {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--gap-standard);
+}
+
+/* Card Styling - Fast & Stable */
+.company-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-standard);
+  opacity: 0;
+  animation: slideFadeUp 0.6s ease-out forwards;
+}
+
+.company-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-active);
+  background-color: var(--color-surface-1); /* Unchanged background on hover */
+  box-shadow: 0 4px 20px rgba(44, 81, 117, 0.08); /* Replaced glow with depth shadow */
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.company-logo-container {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.company-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.company-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Role Badge */
+.company-role-badge {
+  display: inline-block;
+  background-color: var(--accent-amber-light);
+  color: var(--accent-amber);
+  border: 1px solid var(--border-subtle);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+/* Button */
+.company-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.company-card:hover .company-btn {
+  background-color: var(--accent-amber-light);
+  border-color: var(--border-active);
+  color: var(--accent-amber);
+}
+
+/* Animation */
+@keyframes slideFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

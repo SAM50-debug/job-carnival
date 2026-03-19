@@ -1,0 +1,36 @@
+.poster-section {
+  padding: 4rem 2rem;
+  background-color: var(--color-surface-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster-image-wrapper {
+  width: 100%;
+  max-width: 600px; /* Responsive width between 500-700px */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(44, 81, 117, 0.08), 0 0 0 1px var(--border-subtle);
+  display: flex;
+  opacity: 0;
+  animation: posterFadeIn 1s ease-out forwards;
+}
+
+.poster-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Maintain aspect ratio */
+  display: block;
+}
+
+@keyframes posterFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

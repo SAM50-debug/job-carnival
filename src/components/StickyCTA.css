@@ -1,0 +1,108 @@
+.sticky-cta-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50; /* Ensure it stays on top of content */
+  padding: 1.5rem var(--section-padding-x);
+  background-color: rgba(253, 254, 254, 0.85); /* Translucent light background */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-subtle);
+  box-shadow: 0 -4px 20px rgba(44, 81, 117, 0.08); /* Minimal soft shadow */
+  display: flex;
+  justify-content: center;
+}
+
+.sticky-cta-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  gap: var(--gap-standard);
+}
+
+.sticky-cta-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sticky-cta-urgency {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.sticky-cta-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Solid Action Group */
+.sticky-cta-action-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the trust line under button */
+}
+
+.sticky-cta-button {
+  background-color: var(--color-primary); /* Use purely primary per constraint */
+  color: var(--text-light);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 9999px; /* Fully rounded */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: inline-block; /* Support Anchor padding behavior */
+  text-decoration: none;
+}
+
+.sticky-cta-button:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(44, 81, 117, 0.1); /* Subtle hover lift */
+}
+
+.sticky-cta-button:active {
+  transform: scale(0.98);
+}
+
+.sticky-cta-trust-line {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 8px; /* Strict 8px gap mapping constraint */
+  margin-bottom: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .sticky-cta-wrapper {
+    padding: 1rem;
+  }
+  
+  .sticky-cta-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .sticky-cta-content {
+    align-items: center;
+  }
+  
+  .sticky-cta-text {
+    font-size: 1.125rem;
+  }
+  
+  .sticky-cta-button {
+    width: 100%;
+    padding: 1rem;
+  }
+}

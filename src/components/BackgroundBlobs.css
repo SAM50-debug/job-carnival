@@ -1,0 +1,59 @@
+.background-blobs-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.08; /* Extremely subtle floating background shapes */
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background-color: var(--color-primary, #C8464B);
+  top: -10%;
+  left: -10%;
+  animation: drift1 25s infinite alternate ease-in-out;
+}
+
+.blob-2 {
+  width: 800px;
+  height: 800px;
+  background-color: var(--color-accent-dark, #2C5175);
+  bottom: -20%;
+  right: -10%;
+  animation: drift2 20s infinite alternate ease-in-out;
+}
+
+.blob-3 {
+  width: 500px;
+  height: 500px;
+  background-color: var(--color-surface-2, #D8BCC0);
+  top: 40%;
+  left: 50%;
+  animation: drift3 22s infinite alternate ease-in-out;
+}
+
+@keyframes drift1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(15vw, 15vh) scale(1.1); }
+}
+
+@keyframes drift2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-10vw, -15vh) scale(1.05); }
+}
+
+@keyframes drift3 {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-30%, -70%) scale(1.15); }
+}
