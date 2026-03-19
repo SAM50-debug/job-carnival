@@ -9,10 +9,10 @@ export const eventConfig = {
     image: "https://images.unsplash.com/photo-1540317580384-e5d43867caa6?q=80&w=2670&auto=format&fit=crop",
   },
   stages: [
-    { title: "Registration Open", date: "August 1" },
-    { title: "Carnival Begin", date: "August 15" },
-    { title: "Interviews", date: "August 18" },
-    { title: "Offers Rollout", date: "August 25" },
+    { title: "Last date of Registration", date: "March 31" },
+    { title: "GatePass", date: "April 8" },
+    { title: "Interviews", date: "April 10-11" },
+    { title: "Offers Rollout", date: "April 11" },
   ],
   companies: [
     {
